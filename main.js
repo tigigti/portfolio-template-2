@@ -220,6 +220,25 @@ window.onload = function () {
             });
         })();
 
+        (function parallaxBackground() {
+            if (!document.querySelector("#backgroundVid") || !document.querySelector(".top-container")) {
+                return;
+            }
+            const vid = document.querySelector("#backgroundVid");
+            const topContainer = $(".top-container");
+            const multiply = 0.3;
+            const doc = $(document);
+
+            document.addEventListener("scroll", (e) => {
+                const fromTop = doc.scrollTop() * multiply;
+                // vid.style.top = `${fromTop}px`;
+                vid.style.transform = `translateY(-${fromTop}px)`;
+                topContainer.css({
+                    "background-position": `50% -${fromTop}px`,
+                });
+            });
+        })();
+
         animateSubtitle();
         modalAnimation();
         fancyForm();

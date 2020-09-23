@@ -1,7 +1,6 @@
 <?php get_header();?>
 <?php if( have_posts()): while ( have_posts()): the_post(); ?>
 <div class="top-container">
-	<!-- <img src="<?php echo(get_template_directory_uri() . "/img/stock4.jpg");?>" class="background-img show-laptops"> -->
 	<video class="background-vid hide-laptops" id="backgroundVid" preload autoplay muted playsinline loop>
 		<source src="<?php echo(get_template_directory_uri() . "/img/planet.mp4");?>">
 	</video>
@@ -30,6 +29,12 @@
 		<h2 id="subtitle-animated">Web-Entwicklung</h2>
 		<p class="profile-description hide-mobile"><?php the_field("profile_paragraph");?></p>
 	</div>
+</div>
+
+<div style="height: 1500px; background-color: grey; width: 100;">
+	<p>
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	</p>
 </div>
 
 <?php endwhile; else : ?>

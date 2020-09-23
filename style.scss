@@ -30,32 +30,20 @@ $large: 1224px;
     position: relative;
     height: 100vh;
     width: 100%;
-    // background-color: $darkest;
+    background-color: black;
     color: $white;
     overflow: hidden;
 
     @media screen and(max-width: $laptops) {
-        background: url("./img/stock4.jpg") no-repeat center top;
+        background: url("./img/stock4.jpg") no-repeat center center;
         background-size: cover;
+        background-attachment: fixed;
     }
 
     .background-vid {
         height: 100%;
         position: relative;
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.25);
-        }
-    }
-
-    .background-img {
-        height: 100%;
-        width: auto;
+        background-attachment: fixed;
     }
 
     .header-nav {
@@ -178,10 +166,11 @@ $large: 1224px;
             border-radius: 8px;
         }
 
-        @media screen and(max-width: $mobile) {
+        @media screen and(max-width: $tablets) {
             left: 0;
             right: 0;
             align-items: center;
+            padding: 0 8px;
         }
     }
 }
