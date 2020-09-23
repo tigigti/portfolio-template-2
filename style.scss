@@ -3,11 +3,220 @@ Theme Name: Angelos Ioannou Portfolio
 Author: Angelos Ioannou
 Description: My Personal Porftolio Theme for my Website
 */
-@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap");
 
 // Color Variables
 $darkest: #212121;
 $dark: #323232;
-$acccent: #0d7377;
+$accent: #0d7377;
 $accentlight: #14ffec;
 $white: #eeeeee;
+
+// Responsive Breakpoints (Max-width)
+$mobile: 480px;
+$tablets: 768px;
+$laptops: 1024px;
+$large: 1224px;
+
+@mixin gradient-background() {
+    background: $accent;
+    background: -moz-linear-gradient(top, $accentlight 0%, $accent 100%);
+    background: -webkit-linear-gradient(top, $accentlight 0%, $accent 100%);
+    background: linear-gradient(top, $accentlight 0%, $accent 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$accentlight, endColorstr=$accent,GradientType=0 );
+}
+
+.top-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: $darkest;
+    color: $white;
+
+    .header-nav {
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        background-color: transparent;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 34px;
+        line-height: 34px;
+        padding: 16px;
+        .animated-veil {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 100%;
+            right: 0;
+            background-color: $darkest;
+            animation: 2s ease slide-absolute;
+        }
+        [class^="logo"] {
+            height: 34px;
+        }
+        .navigation {
+            margin-left: 2em;
+            .nav-item {
+                margin-right: 1.5em;
+                color: inherit;
+                &:visited {
+                    color: inherit;
+                }
+                &:hover {
+                    color: $accentlight;
+                }
+            }
+        }
+
+        .contact-btn {
+            margin-left: auto;
+            min-width: 230px;
+            border: none;
+            @include gradient-background;
+            border-radius: 8px;
+            color: $darkest;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: normal;
+            &:hover {
+                cursor: pointer;
+            }
+
+            @media screen and(max-width: $large) {
+                min-width: 180px;
+            }
+            @media screen and(max-width: $laptops) {
+                min-width: 100px;
+            }
+        }
+    }
+
+    .about-me-block {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 66px 0 0 10%;
+        flex-direction: column;
+        box-sizing: border-box;
+
+        h1 {
+            position: relative;
+            margin-bottom: 0.5em;
+            &.animated::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 2px;
+                background-color: $accentlight;
+                animation: slide-side 2s ease;
+            }
+        }
+
+        .profile-description {
+            max-width: 480px;
+            color: darken($white, 30%);
+            animation: 4s ease slide-up;
+        }
+    }
+}
+
+@keyframes slide-side {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes slide-absolute {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body,
+html,
+h1,
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+.hidden {
+    display: none;
+}
+
+.hide-mobile {
+    @media screen and(max-width: $mobile) {
+        display: none;
+    }
+}
+
+.hide-tablets {
+    @media screen and(max-width: $tablets) {
+        display: none;
+    }
+}
+
+.hide-laptops {
+    @media screen and(max-width: $laptops) {
+        display: none;
+    }
+}
+
+.hide-large {
+    @media screen and(max-width: $large) {
+        display: none;
+    }
+}
+
+* {
+    outline: none;
+    line-height: 1.5;
+    font-family: "Baloo Tammudu 2", cursive;
+    font-size: 20px;
+    @media screen and(max-width: $large) {
+        font-size: 18px;
+    }
+    @media screen and(max-width: $laptops) {
+        font-size: 16px;
+    }
+}
