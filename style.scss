@@ -30,8 +30,33 @@ $large: 1224px;
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: $darkest;
+    // background-color: $darkest;
     color: $white;
+    overflow: hidden;
+
+    @media screen and(max-width: $laptops) {
+        background: url("./img/stock4.jpg") no-repeat center top;
+        background-size: cover;
+    }
+
+    .background-vid {
+        height: 100%;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    .background-img {
+        height: 100%;
+        width: auto;
+    }
 
     .header-nav {
         display: flex;
@@ -44,6 +69,8 @@ $large: 1224px;
         height: 34px;
         line-height: 34px;
         padding: 16px;
+        animation: 2s ease slide-up;
+
         .animated-veil {
             position: absolute;
             top: 0;
@@ -53,9 +80,22 @@ $large: 1224px;
             background-color: $darkest;
             animation: 2s ease slide-absolute;
         }
+
         [class^="logo"] {
             height: 34px;
         }
+
+        @media screen and(max-width:$mobile) {
+            padding: 8px;
+            height: 24px;
+            line-height: 24px;
+
+            [class^="logo"] {
+                height: 28px;
+                width: auto;
+            }
+        }
+
         .navigation {
             margin-left: 2em;
             .nav-item {
@@ -91,17 +131,28 @@ $large: 1224px;
                 min-width: 100px;
             }
         }
+
+        .contact-icon {
+            margin-left: auto;
+            font-size: 30px;
+            color: $accentlight;
+            margin-right: 8px;
+        }
     }
 
     .about-me-block {
-        width: 100%;
-        height: 100%;
+        // width: 100%;
+        // height: 100%;
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        padding: 66px 0 0 10%;
+        // padding: 66px 0 0 10%;
         flex-direction: column;
         box-sizing: border-box;
+        position: absolute;
+        top: 66px;
+        left: 10%;
+        bottom: 0;
 
         h1 {
             position: relative;
@@ -122,6 +173,15 @@ $large: 1224px;
             max-width: 480px;
             color: darken($white, 30%);
             animation: 4s ease slide-up;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        @media screen and(max-width: $mobile) {
+            left: 0;
+            right: 0;
+            align-items: center;
         }
     }
 }
@@ -187,6 +247,12 @@ h2 {
 .hide-mobile {
     @media screen and(max-width: $mobile) {
         display: none;
+    }
+}
+
+.show-mobile {
+    @media screen and(min-width: calc(#{$mobile} + 1px)) {
+        display: none !important;
     }
 }
 

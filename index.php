@@ -1,19 +1,24 @@
 <?php get_header();?>
 <?php if( have_posts()): while ( have_posts()): the_post(); ?>
 <div class="top-container">
+	<!-- <img src="<?php echo(get_template_directory_uri() . "/img/stock4.jpg");?>" class="background-img show-laptops"> -->
+	<video class="background-vid hide-laptops" id="backgroundVid" preload autoplay muted playsinline loop>
+		<source src="<?php echo(get_template_directory_uri() . "/img/planet.mp4");?>">
+	</video>
 	<div class="header-nav">
-		<div class="animated-veil"></div>
+		<!-- <div class="animated-veil"></div> -->
 		<img class="logo-dark hidden" src="<?php echo(get_template_directory_uri() . "/img/logo_dark.png");?>"/>
 		<img class="logo-light" src="<?php echo(get_template_directory_uri() . "/img/logo_light.png");?>"/>
-		<nav class="navigation">
-			<a href="#" class="nav-item">Leistungen</a>
-			<a href="#" class="nav-item">Referenzen</a>
-			<a href="#" class="nav-item">Technologien</a>
-			<a href="#" class="nav-item hide-laptops">Eigene Projekte</a>
-			<a href="#" class="nav-item hide-large">Impressum</a>
+		<nav class="navigation hide-tablets">
+			<a href="#leistungen" class="nav-item">Leistungen</a>
+			<a href="#referenzen" class="nav-item">Referenzen</a>
+			<a href="#technologien" class="nav-item">Technologien</a>
+			<a href="#projekte" class="nav-item hide-laptops">Eigene Projekte</a>
+			<a href="#impressum" class="nav-item hide-large">Impressum</a>
 		</nav>
 
-		<button class="contact-btn" id="contactBtn">Kontakt</button>
+		<button class="contact-btn hide-mobile">Kontakt </button>
+		<span class="dashicons dashicons-email show-mobile contact-icon"></span>
 	</div>
 	<div class="about-me-block">
 		<h1 class="animated">Angelos Ioannou</h1>

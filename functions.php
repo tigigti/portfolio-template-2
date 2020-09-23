@@ -12,9 +12,9 @@ function ai_register_scripts()
     wp_register_style("portfolio-style", get_template_directory_uri() . "/style.css");
     wp_enqueue_style("portfolio-style");
     wp_enqueue_style("dashicons");
-    wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.0.8/css/all.css');
+    // wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.0.8/css/all.css');
     wp_enqueue_script("portfolio-js", get_template_directory_uri() . "/main.js", array("jquery"));
-    wp_enqueue_style("animate-css", get_template_directory_uri() . "/animate.css");
+    // wp_enqueue_style("animate-css", get_template_directory_uri() . "/animate.css");
 
 }
 

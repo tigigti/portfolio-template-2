@@ -182,7 +182,7 @@ window.onload = function () {
                     speed = 50;
                 } else if (i === subItems[currentItem].length && !finished) {
                     finished = true;
-                    speed = 2500;
+                    speed = 5000;
                 } else if (i <= subItems[currentItem].length && i !== 1) {
                     subContainer[0].innerHTML = subContainer[0].innerHTML.slice(0, -1);
                     i -= 1;
@@ -212,12 +212,12 @@ window.onload = function () {
                     icon.addClass("fas fa-sun").removeClass("far fa-moon");
                     document.body.dataset.theme = "night-mode";
                     nightMode = !nightMode;
-                    return
+                    return;
                 }
                 icon.addClass("far fa-moon").removeClass("fas fa-sun");
                 document.body.dataset.theme = "standard";
                 nightMode = !nightMode;
-            })
+            });
         })();
 
         animateSubtitle();
@@ -227,6 +227,5 @@ window.onload = function () {
         handleFormRequest();
         anchorFunction();
         fetchPostsOnScroll();
-
     });
 };
