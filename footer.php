@@ -1,8 +1,5 @@
 </body>
 <footer>
-	<div id="anchor">
-		Top
-	</div>
 	<div class="footer">
 		<p>Theme by Angelos Ioannou</p>
 		<p>E-Mail: angelos.ioannou@gmx.de</p>

@@ -18,12 +18,14 @@ $tablets: 768px;
 $laptops: 1024px;
 $large: 1224px;
 
-@mixin gradient-background() {
-    background: $accent;
-    background: -moz-linear-gradient(top, $accentlight 0%, $accent 100%);
-    background: -webkit-linear-gradient(top, $accentlight 0%, $accent 100%);
-    background: linear-gradient(top, $accentlight 0%, $accent 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$accentlight, endColorstr=$accent,GradientType=0 );
+$sectionPadding: 48px;
+
+@mixin gradient-background($from, $to) {
+    background: $to;
+    background: -moz-linear-gradient(top, $from 0%, $to 100%);
+    background: -webkit-linear-gradient(top, $from 0%, $to 100%);
+    background: linear-gradient(top, $from 0%, $to 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$from, endColorstr=$to,GradientType=0 );
 }
 
 .top-container {
@@ -58,15 +60,12 @@ $large: 1224px;
         line-height: 34px;
         padding: 16px;
         animation: 2s ease slide-up;
+        transition: all 0.2s;
+        z-index: 9999;
 
-        .animated-veil {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 100%;
-            right: 0;
-            background-color: $darkest;
-            animation: 2s ease slide-absolute;
+        &.pinned {
+            background-color: $dark;
+            // color: $darkest;
         }
 
         [class^="logo"] {
@@ -87,6 +86,7 @@ $large: 1224px;
         .navigation {
             margin-left: 2em;
             .nav-item {
+                line-height: normal;
                 margin-right: 1.5em;
                 color: inherit;
                 &:visited {
@@ -102,7 +102,7 @@ $large: 1224px;
             margin-left: auto;
             min-width: 230px;
             border: none;
-            @include gradient-background;
+            @include gradient-background($accentlight, $accent);
             border-radius: 8px;
             color: $darkest;
             font-size: 18px;
@@ -145,6 +145,9 @@ $large: 1224px;
         h1 {
             position: relative;
             margin-bottom: 0.5em;
+            @media screen and(max-width: $mobile) {
+                font-size: 1.5em;
+            }
             &.animated::before {
                 content: "";
                 position: absolute;
@@ -154,6 +157,11 @@ $large: 1224px;
                 height: 2px;
                 background-color: $accentlight;
                 animation: slide-side 2s ease;
+            }
+        }
+        h2 {
+            @media screen and(max-width: $mobile) {
+                font-size: 1.25em;
             }
         }
 
@@ -171,6 +179,115 @@ $large: 1224px;
             right: 0;
             align-items: center;
             padding: 0 8px;
+        }
+    }
+}
+
+#aboutMe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $darkest;
+    position: relative;
+    padding: $sectionPadding 16px;
+    background-color: $white;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $darkest;
+        z-index: 99;
+        transition: all 0.8s;
+    }
+    &.animate {
+        &::before {
+            left: 100%;
+        }
+    }
+
+    .picture-container {
+        // flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        .image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: $white;
+            border: 4px solid $accentlight;
+        }
+    }
+    .description-container {
+        max-width: 600px;
+    }
+}
+
+#leistungen {
+    background-color: $dark;
+    padding: $sectionPadding 8px;
+    color: $white;
+    @include gradient-background($white, $dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $dark;
+
+    .leistung-card-container {
+        display: flex;
+        flex-direction: row;
+        max-width: 800px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        .leistung-card {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            margin: 0 4px;
+            margin-bottom: 16px;
+            border-top: 2px solid $accentlight;
+            width: 100%;
+            max-width: 250px;
+            height: 250px;
+            opacity: 0;
+            background-color: $white;
+            box-shadow: 0px 2px 5px 0px rgba(82, 82, 82, 1);
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: $dark;
+                color: $white;
+            }
+
+            .leistung-card__icon {
+                height: 20%;
+                padding-top: 8px;
+                span {
+                    width: 100%;
+                    font-size: 40px;
+                }
+            }
+
+            .leistung-card__header {
+                font-size: 1.25em;
+                text-align: center;
+                margin: 8px 0;
+            }
+
+            .leistung-card__desc {
+                padding: 0 4px;
+            }
+            &.animate {
+                animation: slide-up-fast ease 0.5s;
+                opacity: 1;
+            }
         }
     }
 }
@@ -209,10 +326,22 @@ $large: 1224px;
     }
 }
 
+@keyframes slide-up-fast {
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 body,
 html,
 h1,
-h2 {
+h2,
+p {
     margin: 0;
     padding: 0;
 }

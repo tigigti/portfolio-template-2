@@ -225,26 +225,56 @@ window.onload = function () {
                 return;
             }
             const vid = document.querySelector("#backgroundVid");
+            const headerNav = document.querySelector(".header-nav");
             const topContainer = $(".top-container");
             const multiply = 0.3;
             const doc = $(document);
 
             document.addEventListener("scroll", (e) => {
-                const fromTop = doc.scrollTop() * multiply;
+                const st = doc.scrollTop();
+                const fromTop = st * multiply;
+                if (st > 200) {
+                    headerNav.classList.add("pinned");
+                } else {
+                    headerNav.classList.remove("pinned");
+                }
                 // vid.style.top = `${fromTop}px`;
-                vid.style.transform = `translateY(-${fromTop}px)`;
+                vid.style.transform = `translateY(${fromTop}px)`;
                 topContainer.css({
                     "background-position": `50% -${fromTop}px`,
                 });
             });
         })();
 
+        // Holy shit huge shoutout to https://stackoverflow.com/questions/27462306/css3-animate-elements-if-visible-in-viewport-page-scroll
+        function animateWhenVisible(entries, observer) {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate");
+                }
+            });
+        }
+
+        let options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.3,
+        };
+
+        const observer = new IntersectionObserver(animateWhenVisible, options);
+
+        observer.observe(document.getElementById("aboutMe"));
+        const leistungCards = document.querySelectorAll(".leistung-card");
+        leistungCards.forEach((card) => {
+            observer.observe(card);
+        });
+
         animateSubtitle();
         modalAnimation();
         fancyForm();
         fadeInOnView();
         handleFormRequest();
-        anchorFunction();
+        // anchorFunction();
         fetchPostsOnScroll();
     });
 };
