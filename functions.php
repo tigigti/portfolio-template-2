@@ -12,9 +12,7 @@ function ai_register_scripts()
     wp_register_style("portfolio-style", get_template_directory_uri() . "/style.css");
     wp_enqueue_style("portfolio-style");
     wp_enqueue_style("dashicons");
-    // wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.0.8/css/all.css');
     wp_enqueue_script("portfolio-js", get_template_directory_uri() . "/main.js", array("jquery"));
-    // wp_enqueue_style("animate-css", get_template_directory_uri() . "/animate.css");
 
 }
 
@@ -80,33 +78,6 @@ function send_email()
 
 add_action("wp_ajax_send_email", "send_email");
 add_action("wp_ajax_nopriv_send_email", "send_email");
-
-// Endless Scroll Endpoint
-function get_next_posts()
-{
-    $offset = $_POST["offset"];
-    $posts = wp_get_recent_posts(array(
-        "offset" => $offset,
-        "category_name" => "blog_post",
-    ));
-    foreach ($posts as $post):
-    ?>
-	<div class="blog-post">
-		<a href="<?php echo get_permalink($post["ID"]); ?>" class="post-title">
-			<?php echo $post["post_title"]; ?>
-		</a>
-		<h3 class="post-date">
-			&mdash; <?php echo get_the_date("", $post); ?>
-		</h3>
-		<p class="post-content">
-			<?php echo $post["post_excerpt"]; ?>
-		</p>
-	</div>
-	<?php
-endforeach;
-    wp_reset_query();
-    die();
-}
 
 // Activate Ajax for authorised Users and guests
 add_action("wp_ajax_get_next_posts", "get_next_posts");

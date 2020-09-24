@@ -16,8 +16,8 @@
 			<a href="#impressum" class="nav-item hide-large">Impressum</a>
 		</nav>
 
-		<button class="contact-btn hide-mobile">Kontakt </button>
-		<span class="dashicons dashicons-email show-mobile contact-icon"></span>
+		<a href="#kontakt" class="contact-btn hide-mobile">Kontakt </a>
+		<a href="#kontakt" class="contact-icon show-mobile"><span class="dashicons dashicons-email"></span></a>
 	</div>
 	<div class="about-me-block">
 		<h1 class="animated">Angelos Ioannou</h1>
@@ -33,7 +33,7 @@
 
 <section id="aboutMe">
 	<div class="picture-container">
-		<img loading="lazy" class="image" src="<?php the_field('profile_picture');?>">
+		<img class="image" src="<?php the_field('profile_picture');?>">
 	</div>
 	<div class="description-container">
 		<h2><?php the_field("subheader");?></h2>
@@ -59,7 +59,7 @@
 	</div>
 </section>
 
-<section id="referenzen">
+<section id="referenzen" style="position: relative;">
 	<h1 class="section-header">Referenzen</h1>
 	<div class="projects-wrapper">
 	<?php $queryProjects = new WP_Query( array( "category_name" => "big_project")); ?>
@@ -72,15 +72,50 @@
 				</div>
 
 				<div class="image-container">
-					<img loading="lazy" class="main-image" src="<?php the_field('project_image');?>">
-					<img loading="lazy" class="responsive-image" src="<?php the_field('responsive_image');?>">
+					<img class="main-image" src="<?php the_field('project_image');?>">
+					<img class="responsive-image" src="<?php the_field('responsive_image');?>">
 				</div>
 			</div>
 		<?php endwhile;?>
 		<!-- necessary for custom loop -->
 	<?php wp_reset_postdata();?>
 	</div>
+	<div id="kontakt" style="position: absolute; bottom: 150px;"></div>
 </section>
+
+<section class="kontakt">
+	<form class="form-container" id="kontaktContainer">
+		<h1 class="form-header">Kontakt</h1>
+		<div class="form-group">
+				<input placeholder="Name" type="text" name="name"/>
+				<input placeholder="E-Mail" type="email" name="email"/>
+		</div>
+		<input placeholder="Projekt Name" type="text" name="project"/>
+
+		<label for="desc" style="margin-bottom: 8px;">Beschreibung</label>
+		<textarea name="desc" rows=6></textarea>
+
+		<div id="responses"></div>
+		<input type="submit" value="Abschicken" class="submit-btn"/>
+	</form>
+</section>
+
+<section id="projekte">
+	<h1 class="section-header">Eigene Projekte</h1>
+	<div class="small-projects">
+	<?php $querySmallProjects = new WP_Query( array( "category_name" => "small_project")); ?>
+		<?php while ( $querySmallProjects->have_posts() ): $querySmallProjects->the_post(); ?>
+			<a target="_blank" href="<?php the_field("project_link"); ?>" class="small-project-container">
+				<h3 class="small-project__header"><?php the_title(); ?></h3>
+				<div class="small-project__desc">
+					<?php the_content(); ?>
+				</div>
+			</a>
+		<?php endwhile; ?>
+	<?php wp_reset_postdata(); ?>
+	</div>
+</section>
+
 
 <?php endwhile; else : ?>
 		<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>

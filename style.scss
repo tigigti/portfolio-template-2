@@ -4,6 +4,7 @@ Author: Angelos Ioannou
 Description: My Personal Porftolio Theme for my Website
 */
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
 // Color Variables
 $darkest: #212121;
@@ -110,6 +111,9 @@ $sectionPadding: 65px;
             font-size: 18px;
             font-weight: bold;
             line-height: normal;
+            display: block;
+            text-align: center;
+
             &:hover {
                 cursor: pointer;
             }
@@ -293,7 +297,7 @@ $sectionPadding: 65px;
             }
         }
 
-        @media screen and(max-width: $large) {
+        @media screen and(max-width: $laptops) {
             max-width: 800px;
             .leistung-card {
                 height: 250px;
@@ -357,7 +361,6 @@ $sectionPadding: 65px;
                 transition: all 0.2s;
                 // font-weight: bold;
                 letter-spacing: 2px;
-
                 &:hover {
                     background-color: $accentlight;
                     color: $darkest;
@@ -400,6 +403,177 @@ $sectionPadding: 65px;
         .project-container:nth-child(2) {
             flex-direction: row-reverse;
         }
+    }
+}
+
+.kontakt {
+    padding: $sectionPadding 8px 0 8px;
+    background-color: $accent;
+    position: relative;
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 8px;
+        margin: auto;
+        transform: translateY(-120px);
+        background-color: $white;
+        padding: 16px 8px;
+        opacity: 0;
+        box-shadow: 0px 3px 4px 0px rgba(66, 66, 66, 1);
+        color: $darkest;
+        &.animate {
+            opacity: 1;
+            animation: slide-from-left 1s ease;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 16px;
+            @media screen and(max-width: $tablets) {
+                font-size: 1.5em;
+            }
+        }
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: row;
+
+        @media screen and(min-width: calc(#{$tablets} + 1px)) {
+            input {
+                margin-left: 4px;
+                margin-right: 4px;
+            }
+
+            input:first-child {
+                margin-right: 4px;
+                margin-left: 0;
+            }
+            input:last-child {
+                margin-left: 4px;
+                margin-right: 0;
+            }
+        }
+        @media screen and(max-width:$tablets) {
+            flex-direction: column;
+        }
+    }
+
+    .submit-btn {
+        background-color: $accent;
+        color: $white;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+#responses {
+    transition: all 0.3s;
+
+    &.sending {
+        color: $darkest;
+    }
+
+    &.successfull {
+        color: $accent;
+    }
+
+    &.failed {
+        color: crimson;
+    }
+}
+
+input,
+textarea {
+    box-sizing: border-box;
+    border: none;
+    background-color: darken($white, 7%);
+    border-radius: 8px;
+    padding: 6px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+#projekte {
+    padding: $sectionPadding 8px;
+    position: relative;
+    color: $darkest;
+    overflow-x: hidden;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: 0;
+        width: 50%;
+        height: 100px;
+        background-color: $accent;
+        transform: skewY(6deg);
+        z-index: -10;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: -50px;
+        right: 0;
+        width: 50%;
+        height: 100px;
+        background-color: $accent;
+        transform: skewY(-6deg);
+        z-index: -10;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .small-projects {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1400px;
+        margin: auto;
+
+        .small-project-container {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 8px;
+            background-color: $accent;
+            color: $white;
+            transition: all 0.2s;
+            padding: 16px 16px 24px 16px;
+            margin: 8px;
+            box-shadow: 0px 2px 5px 0px rgba(82, 82, 82, 1);
+
+            .small-project__header {
+                margin: 0 0 8px 0;
+                margin-bottom: 24px;
+            }
+
+            .small-project__desc {
+                color: darken($white, 7%);
+            }
+
+            &:hover {
+                background-color: lighten($accent, 15%);
+            }
+        }
+    }
+}
+
+.footer {
+    padding: $sectionPadding 16px;
+    background-color: $darkest;
+    color: $white;
+    p {
+        margin: 8px 0;
     }
 }
 
@@ -448,6 +622,29 @@ $sectionPadding: 65px;
     }
 }
 
+@keyframes slide-from-left {
+    0% {
+        transform: translate(-200%, -120px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(0, -120px);
+        opacity: 1;
+    }
+}
+
+// Are you kidding me this is awesome
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: $white;
+}
+
 body,
 html,
 h1,
@@ -475,7 +672,7 @@ h2 {
 
 .hide-mobile {
     @media screen and(max-width: $mobile) {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -487,26 +684,26 @@ h2 {
 
 .hide-tablets {
     @media screen and(max-width: $tablets) {
-        display: none;
+        display: none !important;
     }
 }
 
 .hide-laptops {
     @media screen and(max-width: $laptops) {
-        display: none;
+        display: none !important;
     }
 }
 
 .hide-large {
     @media screen and(max-width: $large) {
-        display: none;
+        display: none !important;
     }
 }
 
 * {
     outline: none;
     line-height: 1.5;
-    font-family: "Baloo Tammudu 2", cursive;
+    font-family: "Noto Sans JP", sans-serif;
     font-size: 20px;
     @media screen and(max-width: $large) {
         font-size: 18px;
