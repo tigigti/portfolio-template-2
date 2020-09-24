@@ -12,8 +12,7 @@
 			<a href="#aboutMe" class="nav-item">Über mich</a>
 			<a href="#leistungen" class="nav-item">Leistungen</a>
 			<a href="#referenzen" class="nav-item">Referenzen</a>
-			<a href="#technologien" class="nav-item hide-laptops">Technologien</a>
-			<a href="#projekte" class="nav-item hide-large">Eigene Projekte</a>
+			<a href="#projekte" class="nav-item hide-laptops">Eigene Projekte</a>
 			<a href="#impressum" class="nav-item hide-large">Impressum</a>
 		</nav>
 
