@@ -264,10 +264,20 @@ window.onload = function () {
         const observer = new IntersectionObserver(animateWhenVisible, options);
 
         observer.observe(document.getElementById("aboutMe"));
-        const leistungCards = document.querySelectorAll(".leistung-card");
-        leistungCards.forEach((card) => {
-            observer.observe(card);
-        });
+        // const leistungCards = document.querySelectorAll(".leistung-card");
+        // leistungCards.forEach((card) => {
+        //     observer.observe(card);
+        // });
+
+        const observeEl = (selector) => {
+            document.querySelectorAll(selector).forEach((el) => {
+                observer.observe(el);
+            });
+        };
+
+        observeEl(".leistung-card");
+        observeEl(".text-container");
+        observeEl(".image-container");
 
         animateSubtitle();
         modalAnimation();

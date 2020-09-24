@@ -61,7 +61,26 @@
 </section>
 
 <section id="referenzen">
-	referenzen
+	<h1 class="section-header">Referenzen</h1>
+	<div class="projects-wrapper">
+	<?php $queryProjects = new WP_Query( array( "category_name" => "big_project")); ?>
+		<?php while( $queryProjects->have_posts()): $queryProjects->the_post(); ?>
+			<div class="project-container">
+				<div class="text-container">
+					<h2 class="text-container__title"><?php the_field("project_title");?></h2>
+					<p class="text-container__desc"><?php the_field("project_desc");?></p>
+					<a target="_blank" class="text-container__link" href="<?php the_field("project_link");?>">Besuchen</a>
+				</div>
+
+				<div class="image-container">
+					<img loading="lazy" class="main-image" src="<?php the_field('project_image');?>">
+					<img loading="lazy" class="responsive-image" src="<?php the_field('responsive_image');?>">
+				</div>
+			</div>
+		<?php endwhile;?>
+		<!-- necessary for custom loop -->
+	<?php wp_reset_postdata();?>
+	</div>
 </section>
 
 <?php endwhile; else : ?>

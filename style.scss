@@ -18,7 +18,7 @@ $tablets: 768px;
 $laptops: 1024px;
 $large: 1224px;
 
-$sectionPadding: 48px;
+$sectionPadding: 65px;
 
 @mixin gradient-background($from, $to) {
     background: $to;
@@ -64,7 +64,9 @@ $sectionPadding: 48px;
         z-index: 9999;
 
         &.pinned {
-            background-color: $dark;
+            // background-color: $dark;
+            background-color: rgba(50, 50, 50, 0.9);
+            border-bottom: 1px solid $white;
             // color: $darkest;
         }
 
@@ -242,11 +244,12 @@ $sectionPadding: 48px;
     .leistung-card-container {
         display: flex;
         flex-direction: row;
-        max-width: 800px;
-        margin-top: 24px;
+        max-width: 1000px;
+        margin-top: 40px;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+
         .leistung-card {
             border-bottom-left-radius: 4px;
             border-bottom-right-radius: 4px;
@@ -254,8 +257,8 @@ $sectionPadding: 48px;
             margin-bottom: 16px;
             border-top: 2px solid $accentlight;
             width: 100%;
-            max-width: 250px;
-            height: 250px;
+            max-width: 300px;
+            height: 300px;
             opacity: 0;
             background-color: $white;
             box-shadow: 0px 2px 5px 0px rgba(82, 82, 82, 1);
@@ -282,12 +285,120 @@ $sectionPadding: 48px;
             }
 
             .leistung-card__desc {
-                padding: 0 4px;
+                padding: 0 8px;
             }
             &.animate {
                 animation: slide-up-fast ease 0.5s;
                 opacity: 1;
             }
+        }
+
+        @media screen and(max-width: $large) {
+            max-width: 800px;
+            .leistung-card {
+                height: 250px;
+                width: 250px;
+            }
+        }
+    }
+}
+
+#referenzen {
+    padding: $sectionPadding 16px;
+    @include gradient-background($dark, $darkest);
+    color: $white;
+    position: relative;
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .projects-wrapper {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .project-container {
+        margin: 40px 0;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        .text-container,
+        .image-container {
+            padding: 8px;
+            opacity: 0;
+
+            &.animate {
+                animation: slide-up-fast ease 0.5s;
+                opacity: 1;
+            }
+        }
+
+        .text-container {
+            flex: 1;
+            max-width: 600px;
+            .text-container__title {
+                border-bottom: 2px solid $accentlight;
+            }
+            .text-container__desc {
+                margin: 16px 0;
+            }
+            .text-container__link {
+                color: $accentlight;
+                border: 2px solid $accentlight;
+                min-width: 160px;
+                display: inline-block;
+                padding: 6px 0;
+                text-align: center;
+                transition: all 0.2s;
+                // font-weight: bold;
+                letter-spacing: 2px;
+
+                &:hover {
+                    background-color: $accentlight;
+                    color: $darkest;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .image-container {
+            flex: 2;
+            position: relative;
+
+            .main-image {
+                width: 100%;
+                height: auto;
+            }
+
+            .responsive-image {
+                float: right;
+                transform: translate(8px, -40%);
+                position: relative;
+                width: 30%;
+                height: auto;
+                border: 2px solid $accentlight;
+                border-radius: 8px;
+            }
+        }
+
+        @media screen and(max-width: $laptops) {
+            .image-container {
+                flex: 1;
+            }
+        }
+        @media screen and(max-width: $tablets) {
+            flex-direction: column;
+        }
+    }
+
+    @media screen and(min-width: calc(#{$tablets} + 1px)) {
+        .project-container:nth-child(2) {
+            flex-direction: row-reverse;
         }
     }
 }
