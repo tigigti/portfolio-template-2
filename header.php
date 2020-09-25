@@ -1,10 +1,10 @@
 <!doctype html>
-<html>
+<html lang="de">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title><?php bloginfo("name");?></title>
-        <meta name="description" content="">
+        <meta name="description" content="Angelos Ioannou Web-Entwicklung, Web-Design und Wordpress aus Frankfurt am Main.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" sizes="57x57" href="<?php echo(get_template_directory_uri() . "/img/favicon/apple-icon-57x57.png");?>">
         <link rel="apple-touch-icon" sizes="60x60" href="<?php echo(get_template_directory_uri() ."/img/favicon/apple-icon-60x60.png");?>">
