@@ -11,8 +11,7 @@ function ai_register_scripts()
 {
     wp_register_style("portfolio-style", get_template_directory_uri() . "/style.css");
     wp_enqueue_style("portfolio-style");
-    wp_enqueue_style("dashicons");
-    wp_enqueue_script("portfolio-js", get_template_directory_uri() . "/main.js", array("jquery"));
+    wp_enqueue_script("portfolio-js", get_template_directory_uri() . "/main.js");
 
 }
 
@@ -78,10 +77,6 @@ function send_email()
 
 add_action("wp_ajax_send_email", "send_email");
 add_action("wp_ajax_nopriv_send_email", "send_email");
-
-// Activate Ajax for authorised Users and guests
-add_action("wp_ajax_get_next_posts", "get_next_posts");
-add_action("wp_ajax_nopriv_get_next_posts", "get_next_posts");
 
 // Localization
 // load_theme_thextdomain("Angelos Ioannou Portfolio", get_template_directory_uri() . "/languages");

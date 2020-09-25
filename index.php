@@ -17,7 +17,7 @@
 		</nav>
 
 		<a href="#kontakt" class="contact-btn hide-mobile">Kontakt </a>
-		<a href="#kontakt" class="contact-icon show-mobile"><span class="dashicons dashicons-email"></span></a>
+		<a href="#kontakt" class="contact-icon show-mobile"><img src="<?php echo(get_template_directory_uri() . "/img/mail-icon.png");?>"/></a>
 	</div>
 	<div class="about-me-block">
 		<h1 class="animated">Angelos Ioannou</h1>
@@ -49,7 +49,7 @@
 		<?php $queryProjects = new WP_Query( array( "category_name" => "leistung")); ?>
 			<?php while( $queryProjects->have_posts()): $queryProjects->the_post(); ?>
 				<div class="leistung-card">
-					<div class="leistung-card__icon"><?php the_field("leistung_icon");?></div>
+					<div class="leistung-card__icon"><img src="<?php the_field("leistung_icon");?>"/></div>
 					<h2 class="leistung-card__header"><?php the_field("leistung_subheader");?></h2>
 					<div class="leistung-card__desc"><?php the_field("leistung_desc");?></div>
 				</div>

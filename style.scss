@@ -3,7 +3,6 @@ Theme Name: Angelos Ioannou Portfolio
 Author: Angelos Ioannou
 Description: My Personal Porftolio Theme for my Website
 */
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
 // Color Variables
@@ -128,9 +127,15 @@ $sectionPadding: 65px;
 
         .contact-icon {
             margin-left: auto;
-            font-size: 30px;
-            color: $accentlight;
+            // font-size: 30px;
+            // color: $accentlight;
             margin-right: 8px;
+            position: relative;
+            text-align: right;
+            img {
+                height: 100%;
+                width: auto;
+            }
         }
     }
 
@@ -276,10 +281,7 @@ $sectionPadding: 65px;
             .leistung-card__icon {
                 height: 20%;
                 padding-top: 8px;
-                span {
-                    width: 100%;
-                    font-size: 40px;
-                }
+                text-align: center;
             }
 
             .leistung-card__header {
